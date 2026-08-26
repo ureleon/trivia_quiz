@@ -81,7 +81,7 @@ Future<void> main() async {
   final ThemeMode themeModeFromCache = themeMap[prefs.getInt('settings') ?? 1]!;
 
   // 1. Инициализация Workmanager (быстрая операция, можно без await)
-  await Workmanager().initialize(callbackDispatcher);
+  Workmanager().initialize(callbackDispatcher);
 
   // 2. Исправленная инициализация уведомлений (БЕЗ await, с правильными настройками)
   const AndroidInitializationSettings initializationSettingsAndroid =
@@ -89,10 +89,10 @@ Future<void> main() async {
   const InitializationSettings initializationSettings =
   InitializationSettings(android: initializationSettingsAndroid);
 
-  await flutterLocalNotificationsPlugin.initialize(settings: initializationSettings);
+  flutterLocalNotificationsPlugin.initialize(settings: initializationSettings);
 
   // 3. Регистрация задачи
-  await Workmanager().registerPeriodicTask(
+  Workmanager().registerPeriodicTask(
     'periodicPush',
     'push-notification',
     frequency: const Duration(hours: 12),
