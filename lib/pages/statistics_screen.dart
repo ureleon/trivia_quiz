@@ -64,7 +64,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
 // Обрабатываем ошибки
                   if (snapshot.hasError) {
-                    return Center(child: Text('Ошибка: ${snapshot.error}'));
+                    return Center(child: Text('Error: ${snapshot.error}'));
                   }
 
 // Данные получены
@@ -72,7 +72,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
 // Если данных нет или список пуст
                   if (data == null || data.isEmpty) {
-                    return const Center(child: Text('Статистика пока пуста'));
+                    return const Center(child: Text('Statistics is empty for now'));
                   }
 
 // Строим список на основе данных
@@ -84,7 +84,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                           shadowColor: Colors.white70,surfaceTintColor: Colors.white,elevation: 10,
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           child: ListTile(
-                        title: HtmlWidget('${record['questions'] ?? 'Нет вопроса'}'),
+                        title: HtmlWidget('${record['questions'] ?? 'Question is epson'}'),
                         subtitle: HtmlWidget(
                             'Ответ: ${record['answer']} — ${record['mark']}'),
                         leading: HtmlWidget(record['date'].toString().substring(0,19)),
