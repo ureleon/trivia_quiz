@@ -86,7 +86,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                           child: ListTile(
                         title: HtmlWidget('${record['questions'] ?? 'Question is epson'}'),
                         subtitle: HtmlWidget(
-                            'Ответ: ${record['answer']} — ${record['mark']}'),
+                            'Answer: ${record['answer']} — ${record['mark']}'),
                         leading: HtmlWidget(record['date'].toString().substring(0,19)),
                       )
                       );
