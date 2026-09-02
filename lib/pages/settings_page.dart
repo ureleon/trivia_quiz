@@ -1,9 +1,8 @@
-// TODO(uleon): improve architecture, repair logic. Need more regular methods if i call this right
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences/util/legacy_to_async_migration_util.dart';
 import 'package:trivia_questions/config/theme_controller.dart';

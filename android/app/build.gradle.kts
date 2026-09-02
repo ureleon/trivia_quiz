@@ -58,7 +58,6 @@ android {
 
     buildTypes {
         release {
-            // Используем release-подпись, если она настроена, иначе debug для разработки
             signingConfig = signingConfigs.getByName("release").takeIf { it.storeFile != null }
                 ?: signingConfigs.getByName("debug")
         }
