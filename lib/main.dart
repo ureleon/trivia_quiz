@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:go_router/go_router.dart';
@@ -80,24 +82,21 @@ Future<void> main() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final ThemeMode themeModeFromCache = themeMap[prefs.getInt('settings') ?? 1]!;
 
-  // 1. Инициализация Workmanager (быстрая операция, можно без await)
-  Workmanager().initialize(callbackDispatcher);
+  unawaited(Workmanager().initialize(callbackDispatcher));
 
-  // 2. Исправленная инициализация уведомлений (БЕЗ await, с правильными настройками)
   const AndroidInitializationSettings initializationSettingsAndroid =
   AndroidInitializationSettings('@mipmap/ic_launcher');
   const InitializationSettings initializationSettings =
   InitializationSettings(android: initializationSettingsAndroid);
 
-  flutterLocalNotificationsPlugin.initialize(settings: initializationSettings);
+  unawaited(flutterLocalNotificationsPlugin.initialize(settings: initializationSettings));
 
-  // 3. Регистрация задачи
-  Workmanager().registerPeriodicTask(
+  unawaited(Workmanager().registerPeriodicTask(
     'periodicPush',
     'push-notification',
     frequency: const Duration(hours: 12),
     constraints: Constraints(networkType: NetworkType.notRequired),
-  );
+  ));
 
   runApp(MyApp(themeMode: themeModeFromCache));
 }

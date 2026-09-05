@@ -19,8 +19,8 @@ class ResultsScreen extends StatefulWidget {
 
 class _ResultsScreenState extends State<ResultsScreen> {
 
-  late final String _timer;
-  late final String _results;
+  String _timer = '0';
+  String _results = 'correct answers: 0, incorrect answers: 0';
   String resultsCategory = 'category: ${quizCategory.entries.firstWhere((MapEntry<String, String> element) => element.value == selectedCategory,).key}';
   String resultsDifficulty = 'difficult: ${quizDifficulty.entries.firstWhere((MapEntry<String, String> element) => element.value == selectedDifficulty,).key}';
   String resultsType = 'type of questions: ${quizType.entries.firstWhere((MapEntry<String, String> element) => element.value == selectedType,).key}';
